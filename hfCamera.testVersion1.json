@@ -1,0 +1,31 @@
+{
+	"file type" : "HF Camera File",
+	"file version" : 1,
+	"camera name" : "test file",
+	"camera make" : "test make",
+	"camera model" : "test model",
+	"description" : "version 1 json test file",
+	"hFoV" : 54.0,
+	"vFoV" : 31.0,
+	"dFoV" : 68.0,
+	"zoom table" : {
+		"version" : 1,
+		"description" : "fixed table of 10 (non-trivial) magnification levels at fixed zoom spacing (20) over full range (0-200)",
+		"array size" : 11,
+		"zoom step" : 20,
+		"mag array" : [
+			1.0,
+			2.2,
+			3.3,
+			4.4,
+			5.5,
+			6.6,
+			7.7,
+			8.8,
+			9.9,
+			10.0,
+			11.1
+			]
+		}
+}
+

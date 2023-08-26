@@ -1,0 +1,31 @@
+{
+	"file type" : "HF Camera File",
+	"file version" : 1,
+	"camera name" : "XBC-KZ10",
+	"camera make" : "KT&C",
+	"camera model" : "XBC-KZ10",
+	"description" : "stock lens; no mods to optics",
+	"hFoV" : 54.0,
+	"vFoV" : 31.0,
+	"dFoV" : 68.0,
+	"zoom table" : {
+		"version" : 1,
+		"description" : "fixed table of 10 (non-trivial) magnification levels at fixed zoom spacing (20) over full range (0-200)",
+		"array size" : 11,
+		"zoom step" : 20,
+		"mag array" : [
+			1.0,
+			1.335,
+			1.894,
+			2.732,
+			4.287,
+			7.371,
+			9.048,
+			11.059,
+			15.739,
+			25.582,
+			89.074
+			]
+		}
+}
+

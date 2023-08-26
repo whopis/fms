@@ -1,0 +1,644 @@
+Flight Management System
+Release Notes
+
+v1.13.0		2022-09-26
+   New Features:
+	Bumped version number for ease of use
+
+v1.12.46	2022-09-26
+   Bug fixes:
+	Improved voltage check for auto abort
+
+v1.12.45	2022-09-26
+   Bug fixes:
+	Added verify connections during landing
+
+v1.12.44	2022-09-26
+   Bug fixes:
+	Corrected error in craft connection routine
+
+v1.12.43	2022-09-26  -- bad version -- do not use
+   Bug fixes:
+	Added VerifyConnection check to all internal loops
+
+v1.12.42	2022-09-25
+   Bug fixes:
+	Moved launch climb rate set loop
+	
+
+v1.12.41	2022-09-24
+   New features:
+	Added variable launch ascent rate
+	Added variable flight ascent rate
+	Added auto abort land on comm reconnection
+
+
+v1.12.40 	2022-09-23
+    New features:
+	Removed logging of SendCommandLong to reduce space
+	
+	
+v1.12.33-rc1  2022-05-17
+   New features:
+	Changes to support GPS denied
+
+v1.12.31  2022-05-02
+    Bug fixes:
+	Corrects pan slew speed and changes slew timeout to 35 seconds
+	
+v1.12.30  2022-04-13
+    New features:
+	Adds landing heading for TK/locking mechanism option
+	
+v1.12.29  2021-12-16
+    Release version of 1.12.29
+   
+v1.12.29-rc2
+    Bug fixes:
+	If the craft is in flight when the FMS starts, the system will go to an error mode and
+	force the craft into (or continue) land.
+
+v1.12.29-rc1
+    Bug fixes:
+	Eliminates state confusion when a landing is halted immediately after commanding it
+	
+v1.12.28
+    Released version of 1.12.28
+    
+v1.12.28-rc1
+    New features:
+	Reports an altitude of 0.0 when the craft is disarmed
+	
+v1.12.27
+    Supports new log file nomenclature getting file ordinal from /hti/apps/session/session.txt
+    
+
+v1.12.26
+    Merge of branches for 1.12.23GDMS/1.12.25 hfProxy with 1.12.24-locker/tardec and continuousZoomFix
+
+v1.12.25
+    New features:
+	Release of proxy code
+
+v1.12.24-locker
+    New features:
+	This is one-off version made for TARDEC.
+	It treats a SkyboxOpen command as a LockerOpen command to maintain compatibility with
+	their existing WMI interface (version 2.4.1 of the SDK).  That interface had a pre-release
+	version of the Locker open/shut commands.
+	
+v1.12.24
+    New features:
+	If locker mode is enabled, an openLocker command is issued at the end of the launch sequence
+	This will cause the locker to reset to the nominal open position
+	
+v1.12.23-GDMS
+    New features:
+	Controller manager listens on port 10152 for proxy server
+	
+v1.12.23
+    New features:
+	Added communication to BGU to disable precision landing with new GPS denied code
+	
+v1.12.22
+    New features:
+	Added ability to turn GPS on and off from GUI
+
+v1.12.20
+    New features:
+	Added additional reel data messages
+
+v1.12.19+gpsAutoSwitch
+    Bug fixes:
+	Re-introduces lost 1.12.15branch code that tested GPS based on the craft parameters governing
+	which GPS is used.
+
+v1.12.19
+    Bug fixes:
+	Properly resets craftInitiatedLanding variable
+	
+v1.12.18
+    New features:
+	Will not issue home command on land if precision land is disabled
+	
+v1.12.17
+    Bug fixes:
+	Corrected LED controls
+	
+v1.12.16
+    New features:
+	Reports precision land state (enabled/disabled/failed) to the API
+	Allows the precision land to be enabled and disabled
+	Adds landing retry as a parameter to enable/disable
+
+v1.12.15-LandingRetryRedux
+    New features:
+	Re-implements 'v1.12.13-landingRetry like' changes to allow BGU to halt and recenter during landing
+	
+	Updates bguCommand object to get values that are not set by the controller via FMS
+	(gpsOn, corrOn, swingOn) from a bguCommandOptions.txt file
+
+v1.12.14
+    Released version 4/30/2021
+
+v1.12.14-rc2
+    New features:
+	Performs voltage check prior to allowing launch of craft
+
+v1.12.14-rc1
+    Bug fixes:
+	Zoom during OTM has been moved to separate thread to avoid update delays
+	Tether length data source corrected
+
+v1.12.13
+    New features:
+	Takeoff timeout is 10 seconds if minimum altitude is 5m, 15 seconds otherwise
+
+v1.12.12
+    New features:
+	Minimum altitude is settable as a parameter 
+	Yaw realignment altitude is set on the craft relative to the minimum altitude
+    Bug fixes:
+	Recent data updates are required prior to launch
+	Detects disarm after launch command
+
+v1.12.11
+    New features:
+	Autodetects gimbal by looking for heartbeat from gimbal
+
+	Prevents yaw and pan motion during launch sequence
+
+v1.12.10-rc5 
+    New features:
+	Sends reel_resetPosition command when arming to 'zero' tether length before each flight.
+	Can set any offset, but just zero for now.
+	Removes reelConnection; goes through HUB (SkyBoxConnection)
+
+v1.12.10-rc4
+    New features:
+	Changes flock()-ing for bguCommand and bguReport to simply using a temp file and 'atomic' file
+	rename operation.
+
+v1.12.10-rc3
+    New features:
+	Changes for bguCommand.txt and bguReport.txt file locking between FMS and bguLogServer
+
+v1.12.10-rc2
+    New features:
+	Added connection to reel HUSP
+
+v1.12.10-rc1
+    New features:
+	No longer updates ground temperature (experiment)
+
+v1.12.10
+    New features:
+	Changed flight floor to 10m to accomodate new firmware on craft
+
+v1.12.9
+    v1.12.9-rc1
+    New features:
+	Reads 'ATSHealth' from bguReport.txt.
+	Sends controllers/observers new BguStatus message.
+	 
+v1.12.8
+    v1.12.8-rc4
+    Bug fixes:
+	Changed all ConnectionManager::Sendxxx messages to use test to only send to Active Connections. 
+
+    v1.12.8-rc3
+    New features:
+	Increase target data update rate to 10Hz.  This required increasing the craft telem data stream to 10Hz (CraftConnection.cpp) as well
+	as the Controller Data stream loop rate (FlightManagementSystem.cpp).
+
+    v1.12.8-rc2
+    New features:
+	Added vibration data logging from craft
+	Added vibration limit / filter
+
+v1.12.7
+    v1.12.7-rc3
+    Bug fixes:
+	more changes so everything FMS/BguLogger/Bgu use same units and names for this stuff.
+    v1.12.7-rc2
+    Bug fixes:
+	just changes to get this working right.
+    v1.12.7-rc1
+    New features:
+    PowerLoss descent framework.  This invloves reading the bguReport.txt file and using the data therein to signal a drop in elevation
+	to lower the craft power requirements to what the craft can produce.  This requires an updated BGU firmware 1.4.43 to generate
+	the data and bguLogServer v1.1.9 to receive and deliver it.
+    Bug fixes:
+    cURL lib takes a few seconds to initialize.  We add a GetColorPalette() call as early as possible to complete
+	the init before the user issues and commands and must wait on it.
+
+v1.12.6
+    v1.12.6 - rc1
+    Bug fixes:
+	The path hfCamera file for FoV, zoom table did not include path info
+	so it was not being loaded.  Now defined as "/home/pi/hti/apps/fms/hfCamera.xbc-kz10.json"
+    New Features:
+	Added a sawtooth jitter to RC7 (zoom) of magnitude 20 for use in monitoring traffic upstream to
+	the craft.  Craft doesn't log HB, so this acts as a higher resolution method to indicate that
+	some data is making it up.  
+	some data is making it up.  
+	
+v1.12.5
+    v1.12.5 - rc3
+   Bug fixes:
+   Fixed a bug in the logging of the Baro3 base pressure.
+
+    v1.12.5 - rc2
+    New features:
+        Added Thermal thread which reads in and logs the CPU temperature of the RPi.
+            Also stores the current value in flightmanagementsystem::m_rpiTemperature (for later use to notify user?) Logs a temperature
+            of -100.0 C if the reported temp is >100.0 or < -40.0.  Reads value out of /home/pi/hti/utilities/thermal/temperature file.
+            REQUIRES temp_monitor.sh to be running to update the file with the current temperature.  Only logs the first failure if the
+            temperature file cannot be opened but will retry every second.
+
+    v1.12.5 - rc1
+    New features:
+	Logs the craft's reported 'battery' voltage and current measurements.
+    Bug fixes:
+	Corrects errors in the display.
+
+v1.12.4
+   Bug fixes:
+   Fixed a bug that would cause the system to shutdown after 1 hour of flight
+
+
+v1.12.3
+   New Features:
+   Added reporting of craft flight stat values
+   GPS Number of satellites reports best of GPS1 and GPS2
+
+
+v1.12.2
+   New Features:
+   Improved Gimbal autodetection (release RC channels prior to check)
+
+
+v1.12.1
+   New Features:
+   Gimbal autodetection
+
+
+v1.12.0
+   Bug Fixes:
+   Fixed MAVLink parsing issue that would cause the FMS to think it was receiving packets when it wasn't
+   Fixed locker mechanism issues (would allow arming while locked / only worked in certain states)
+
+
+v1.11.3
+    Released version of 1.11.3
+
+
+v1.11.3-rc3
+    New Features:
+    Disabled gimbal autodetection for now (no time for testing)
+    Added logging of failed checksum on MAVLink packets
+
+
+v1.11.3-rc2
+    New Features:
+    Added gimbal autodetection
+
+
+v1.11.3-rc1
+    New Features:
+    Added voltage check prior to arm that responds with message if battery is low
+
+
+v1.11.2
+    Bug Fixes:
+    Corrected Locker command system
+
+
+v1.11.1
+    New Features:
+    Abort landing maintains craft's current latitude / longitude
+    Abort landing sends navigate command immediately
+
+
+v1.11.0
+    New Features:
+    Added compensation for the third barometer
+
+    Disabled GPS check during flight due to hardware issue with dual GPS board
+
+
+v1.10.6
+    New Features:
+    Added LockerStatus message to outgoing messages
+    Added -v command line option to display version number
+    Added make install feature to makefile
+
+    Bug Fixes:
+    Changed the location of the bgu command file used by the FMS to reflect the new architecture
+
+
+v1.10.5
+    Bug Fixes:
+    Corrected log file null values in firmware / hardware version strings
+
+
+v1.10.4
+    New Features:
+    Included targeting code from 1.9.26 in main version
+
+
+v1.10.3
+    New Features:
+    Config parameters may now be loaded through a config file
+
+v1.10.2
+    Bug Fixes:
+    Fixed a git merge error
+
+v1.10.1
+    New Features:
+    Toggle LED function
+    150ft follow mode limit
+
+v1.10.0
+    New Features:
+    SkyBox Control
+    Improved logging scheme
+
+v1.9.26
+    Released version of 1.9.26rc9
+
+
+v1.9.26rc9
+    New Features:
+  	Disabled the Yaw Heading during landing for now
+
+
+v1.9.26rc7
+    Bug Fix:
+        Disables GimbalStatus::LoadCamera() to immegiately return -1 failure until RapidJson errors are solved.
+
+        Alters SlewToLandHeading to work w/o gimbal. and also to allow craft to turn until slewing is done.
+        Changes slewing monitor loop to process KillCraft and Halt commands (Dan's test loop from Land func)
+
+
+
+v1.9.26rc6
+    New Features:
+    Added Lost Comm Timeout option to startup parameters
+
+
+v1.9.26rc5
+    New Features:
+    Added landing heading support to the land command
+
+
+v1.9.26rc4
+    New Features:
+    Added check to verify that RC channels 1, 2, and 4 are above a minimum value
+
+
+v1.9.25
+    Bug Fixes:
+    Corrected Go To Home feature
+
+
+v1.9.24
+    New Features:
+    Added 10m limit to translate capability
+    Added failsafe landing on failed ground barometer
+    Added "Go To Home" reposition command
+
+    Bug fixes:
+    Corrected data rejection for ground barometer
+
+
+v1.9.23
+    New Features:
+    Added "-disableDigitalZoom option"
+
+v1.9.22
+    New Features:
+    Added in led and laser state control messages
+
+v1.9.21
+    Bug fixes:
+    Altered baro compensation to remove race condition.
+    Baro is now compensated during the ReadyToArm state
+    Also baro compensation is applied to both the primary and secondary BaroConnection
+
+v1.9.20
+    Bug Fixes:
+    Removed changes in v1.9.19
+
+v1.9.19
+    Bug Fixes:
+    Better handling of loss of ground control comms during landing
+
+
+v1.9.18
+    New Features:
+    Added reporting of Zoom position and IR Color Palette
+    Added function to directly set the zoom position
+
+
+v1.9.17
+    Bug Fixes:
+    Properly clear manual commands (tilt/yaw) when landing
+
+
+v1.9.16
+    Bug Fixes:
+    Corrected handling of commands to allow color palette changes in acquire craft gps and other modes
+
+
+v1.9.15
+    Bug Fixes:
+    Corrected emergency descent routine to ensure multiple desents will be made
+    if needed
+
+
+v1.9.14
+    New Features:
+	Cleaned up some of the logging
+
+
+v1.9.13
+    New Features:
+	Added IR color palette control and step zoom functions
+
+
+v1.9.12
+    Bug Fixes:
+	Ensures that a low-voltage failsafe landing can not be aborted
+
+v1.9.11
+    New Features:
+        Added ability for kill switch mode to recycle the craft for the next launch
+
+v1.9.10
+	New Features:
+		Added backup controller and require backup controller parameters
+
+v1.9.9
+	New Features:
+		Allows for an abort of a landing.
+		Has a command line parameter (abortPL) to indicate whether or
+		or not to disable precision landing after a landing abort.
+
+
+v1.9.8
+	New Features:
+		Changes for demo mode for setting coordinates in Las Vegas
+		Read from coordinates.txt file to load in lat, lon, & alt coordinates for demo mode
+		If in demmo mode sets Flight Hold as craft's state in heartbeat messages
+
+v1.9.4
+	New Features:
+		Disabled voltage checks during flight due to sensitivity
+
+v1.9.3
+	Integrates camera (find and zoom) features that were made with v1.9.1-2 changes in the Master branch
+		Looks at all IPs 10.20.30.40-49 for cameras (by new rule cam @ 40 always = Sony EO, 41=FLIR VUE, 42=both KT&C and Boson, 43=FCB-MA132, ???)
+		  First implemented with 1.8.4 but now does so in separate thread.  Starts looking after CraftConnection and polls every 10sec for 2min.
+		  Any cameras found are added to list (no entry is removed if it goes missing later).  FMS outputs ZOOM IN, OUT, STOP commands to ALL
+		  cameras that it finds.
+
+		Zoom for KT&C (@ 42 - 1) is implemented exactly like Sony EO (@ 40).  ZOOM for FCB-MA132 (@43) 'simulates' contiunuous zoom using a separate
+		thread and multiple ZoomTo commands.
+
+
+v1.8.6
+  New features:
+	Option to diable voltage checks
+	Option to specify BigSky
+	Read and report tether length
+
+v1.8.5
+   New features:
+	Ground baro safety check (doesn't allow jumps of over 200 pascals)
+	Flight voltage check - voltage must be between 22.0v and 28.0v to launch
+
+v1.8.4
+	???
+
+v1.8.3
+    New features:
+	Check for over voltage errors prior to launch and during flight
+
+v1.8.2
+    New features:
+	Allow land command during take off procedure
+
+v1.8.1
+    New features:
+	Includes range finder in standard data stream
+
+v1.8.0
+    New features:
+	Added support for high RC PWM channels (9-16)
+
+v1.7.6
+    New features:
+	Added tether length emergency descend
+	Removed tether temperature emergency land
+	Added configuration message dump on controller connect
+
+v1.7.5
+    New features:
+	Added additional logging
+
+v1.7.4
+    New features:
+	Added 60 sample boxcar filter to ground pressure reading
+
+v1.7.3
+    Bug fixes:
+        Handles MAVLink heartbeats from gimbal controller properly
+
+v1.7.2
+	New Features:
+		Improved baro compensation using delta pressures
+
+v1.7.1
+	New Features:
+		Support for external ground barometer / altitude compensation
+
+v1.7.0
+	New Features:
+		Support for APM:Copter 3.5 +
+
+v1.6.9
+	Bug fixes:
+		Corrected Navigate_To_Pos so that it handled the message in DeviceConnection
+
+v1.6.8
+	New Features:
+		Added Navigate_To_Pos command to allow navigation to specified lat/lon
+
+v1.6.7
+	Bug fixes:
+		Corrected problem where data stream was not sent unless in debug mode
+
+v1.6.6
+	New Features:
+		Added demoMode command line option
+
+v1.6.5
+	New Features:
+		Added ability to send craft an absolute altitude command
+
+v1.6.4
+	Bug fixes:
+		Corrected target latitude/longitude calculation
+
+v1.6.3
+    	New Features:
+        	Added ability for observer to request emergency landing
+
+
+v1.6.2
+	New Features:
+		Added -maxaltitude [altitude in cm] option for setting max altitude
+
+
+v1.6.1
+	Bug fixes:
+		Forces landing if controller is not active for more than 5 seconds
+
+
+v1.6.0
+	Updated version number to align with SDK version number
+
+
+v1.4.0
+	New Features:
+		Added region of interest
+
+v1.3.2
+	Bug fixes:
+		Fixed bug where yaw was disabled when -yawFollowsPan was disabled
+
+
+v1.3.1
+
+	Bug fixes:
+		Camera faces forward during landing
+
+
+v1.3.0
+
+	New features:
+		Added optional Yaw Follows Pan mode (enabled with -yawFollowsPan)
+
+		Higher resolution control on joystick / manual control
+
+		Higher frequency gimbal updates (10hz)
+
+v1.0.5
+3/31/2017
+
+The FMS will send the version number as a status text message upon connecting to the controller.
+
+
+

@@ -1,0 +1,10 @@
+lat 320077777
+alt 1777
+lon -1211234567
+
+Instructions:
+	First three lines must include lat, lon, alt in any order followed
+	with a single space, the integer value, and a newline.
+Units:
+	lat and lon: degress * 10^7
+	alt: millimeters
